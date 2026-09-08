@@ -5,24 +5,44 @@ import Robot from "./Robot";
 export default function Scene() {
   return (
     <Canvas
-      camera={{ position: [0, 1.5, 5], fov: 45 }}
-      gl={{ antialias: true }}
+      camera={{
+        position: [0, 1.2, 5],
+        fov: 40,
+      }}
+      gl={{
+        antialias: true,
+      }}
+      shadows
     >
-      <ambientLight intensity={1} />
+      <ambientLight intensity={0.35} />
 
       <directionalLight
-        position={[3, 5, 3]}
-        intensity={2}
+        position={[4, 6, 4]}
+        intensity={2.5}
+        castShadow
       />
 
-      <Environment preset="studio" />
+      <pointLight
+        position={[-4, 2, 3]}
+        intensity={25}
+        distance={10}
+      />
+
+      <pointLight
+        position={[4, 1, -2]}
+        intensity={15}
+        distance={8}
+      />
+
+      <Environment preset="city" />
 
       <Robot />
 
       <OrbitControls
         enablePan={false}
-        minDistance={2}
-        maxDistance={8}
+        minDistance={3}
+        maxDistance={7}
+        target={[0, 0, 0]}
       />
     </Canvas>
   );
