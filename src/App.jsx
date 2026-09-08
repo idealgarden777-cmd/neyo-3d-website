@@ -1,18 +1,16 @@
+import Scene from "./components/Scene";
+
 export default function App() {
   return (
-    <div
+    <main
       style={{
         width: "100vw",
         height: "100vh",
-        background: "white",
-        color: "black",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "40px",
+        overflow: "hidden",
+        background: "#050505",
       }}
     >
-      NEYO IS WORKING ✅
-    </div>
+      <Scene />
+    </main>
   );
 }
