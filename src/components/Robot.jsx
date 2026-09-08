@@ -6,8 +6,9 @@ export default function Robot() {
   return (
     <primitive
       object={scene}
-      scale={1}
-      position={[0, -1, 0]}
+      scale={1.8}
+      position={[0, -1.4, 0]}
+      rotation={[0, 0, 0]}
     />
   );
 }
