@@ -1,20 +1,53 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Environment } from "@react-three/drei";
+import Robot from "./Robot";
 
 export default function Scene() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
-      style={{ width: "100%", height: "100vh" }}
+      camera={{
+        position: [0, 1.2, 5],
+        fov: 40,
+      }}
+      gl={{
+        antialias: true,
+      }}
+      shadows
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
     >
-      <ambientLight intensity={2} />
+      <ambientLight intensity={0.6} />
 
-      <mesh>
-        <boxGeometry args={[1.5, 1.5, 1.5]} />
-        <meshStandardMaterial color="orange" />
-      </mesh>
+      <directionalLight
+        position={[4, 6, 4]}
+        intensity={2}
+        castShadow
+      />
 
-      <OrbitControls />
+      <pointLight
+        position={[-4, 2, 3]}
+        intensity={10}
+        distance={10}
+      />
+
+      <pointLight
+        position={[4, 2, -2]}
+        intensity={8}
+        distance={10}
+      />
+
+      <Environment preset="studio" />
+
+      <Robot />
+
+      <OrbitControls
+        enablePan={false}
+        minDistance={2}
+        maxDistance={8}
+        target={[0, 0, 0]}
+      />
     </Canvas>
   );
 }
